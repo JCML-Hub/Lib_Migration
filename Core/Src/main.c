@@ -29,11 +29,17 @@
 #include "led.h"
 #include "touch.h"
 #include "key.h"
+#include "lvgl.h"
+#include "lv_port_disp_template.h"
+#include "lv_ex_conf.h"
+#include "gui_guider.h"
+#include "events_init.h"
+//#include "lv_demo_widgets.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+lv_ui guider_ui;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -95,25 +101,34 @@ int main(void)
   KEY_Init();
   Delay_init(72);//当前的单片机频率
   LCD_Init();							//初始化LCD
-  tp_dev.init();				  //触摸屏初始化
-  POINT_COLOR=RED;
-  LCD_ShowString(30,50,200,16,16,"Mini STM32");
-  LCD_ShowString(30,70,200,16,16,"TOUCH TEST");
-  LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
-  LCD_ShowString(30,110,200,16,16,"2019/11/15");
-  if(tp_dev.touchtype!=0XFF)
-  {
-    LCD_ShowString(30,130,200,16,16,"Press KEY0 to Adjust");//电阻屏才显示
-  }
-  Delay_ms(1500);
-  Load_Drow_Dialog();
-  rtp_test(); 					//电阻屏测试
+  LCD_Display_Dir(0);
+  lv_init();
+  lv_port_disp_init();
+  setup_ui(&guider_ui);
+  events_init(&guider_ui);
+//  lv_demo_widgets();
+//  tp_dev.init();				  //触摸屏初始化
+//  POINT_COLOR=RED;
+//  LCD_ShowString(30,50,200,16,16,"Mini STM32");
+//  LCD_ShowString(30,70,200,16,16,"TOUCH TEST");
+//  LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
+//  LCD_ShowString(30,110,200,16,16,"2019/11/15");
+//  if(tp_dev.touchtype!=0XFF)
+//  {
+//    LCD_ShowString(30,130,200,16,16,"Press KEY0 to Adjust");//电阻屏才显示
+//  }
+//  Delay_ms(1500);
+//  Load_Drow_Dialog();
+//  rtp_test(); 					//电阻屏测试
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    lv_tick_inc(5);
+    lv_task_handler();
+    Delay_ms(5);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

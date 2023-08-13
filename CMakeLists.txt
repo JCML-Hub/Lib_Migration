@@ -51,7 +51,10 @@ endif ()
 
 include_directories(Core/Inc Drivers/STM32F1xx_HAL_Driver/Inc
         Drivers/STM32F1xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F1xx/Include
-        Drivers/CMSIS/Include Drivers/Hardware Drivers/LCD Drivers/TOUCH)
+        Drivers/CMSIS/Include Drivers/Hardware Drivers/LCD Drivers/TOUCH
+        Drivers/GUI Drivers/GUI/lvgl Drivers/GUI/lvgl/src/lv_core Drivers/GUI/lvgl/src/lv_draw Drivers/GUI/lvgl/src/lv_font Drivers/GUI/lvgl/src/lv_gpu Drivers/GUI/lvgl/src/lv_hal
+        Drivers/GUI/lvgl/src/lv_misc Drivers/GUI/lvgl/src/lv_themes Drivers/GUI/lvgl/src/lv_widgets Drivers/GUI/lvgl/src Drivers/GUI/lvgl/examples/porting
+        Drivers/GUI/lvgl_app/generated Drivers/GUI/lvgl_app/generated/guider_fonts Drivers/GUI/lvgl_app/generated/guider_customer_fonts Drivers/GUI/lvgl_app/custom)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE)
 

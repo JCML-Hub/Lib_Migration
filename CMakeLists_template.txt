@@ -48,7 +48,9 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(${includes} Drivers/Hardware Drivers/LCD Drivers/TOUCH)
+include_directories(${includes} Drivers/Hardware Drivers/LCD Drivers/TOUCH
+        Drivers/GUI Drivers/GUI/lvgl Drivers/GUI/lvgl/src/lv_core Drivers/GUI/lvgl/src/lv_draw Drivers/GUI/lvgl/src/lv_font Drivers/GUI/lvgl/src/lv_gpu Drivers/GUI/lvgl/src/lv_hal
+        Drivers/GUI/lvgl/src/lv_misc Drivers/GUI/lvgl/src/lv_themes Drivers/GUI/lvgl/src/lv_widgets Drivers/GUI/lvgl/src Drivers/GUI/lvgl/examples/porting Drivers/GUI/lvgl_app/lv_examples/src/lv_demo_widgets)
 
 add_definitions(${defines})
 
